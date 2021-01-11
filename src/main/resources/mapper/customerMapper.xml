@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rili.demo.dao.CustomerDao">
+    <select id="find" resultType="com.rili.demo.entity.CustomerEntity">
+        SELECT
+            `tb_rili_customer`.`id`,
+            `tb_rili_customer`.`customer_id`,
+            `tb_rili_customer`.`customer_name`,
+            `tb_rili_customer`.`customer_type`,
+            `tb_rili_customer`.`customer_org_name`,
+            `tb_rili_customer`.`whole_machine_id`,
+            `tb_rili_customer`.`jy_machine_name`,
+            `tb_rili_customer`.`jy_customer_code`,
+            `tb_rili_customer`.`jy_machine_code`,
+            `tb_rili_customer`.`jy_customer_name`,
+            `tb_rili_customer`.`service_level`,
+            `tb_rili_customer`.`mine_level`,
+            `tb_rili_customer`.`business_level`,
+            `tb_rili_customer`.`created_time`,
+            `tb_rili_customer`.`modified_time`
+        FROM
+            `demo`.`tb_rili_customer`
+        LIMIT 0, 10
+    </select>
+</mapper>
