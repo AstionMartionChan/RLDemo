@@ -7,32 +7,35 @@ import com.rili.demo.entity.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-//@EnableAutoConfiguration
 @SpringBootApplication
 public class RLApplication {
 
     @Autowired
     private CustomerDao customerDao;
 
-    @RequestMapping("/search/{searchValue}/{pageIndex}/{pageSize}")
+    @RequestMapping("/search")
     @ResponseBody
-    List<SearchResult> home(@PathVariable String searchValue,
-                              @PathVariable Integer pageIndex,
-                              @PathVariable Integer pageSize) {
-        SearchParam param = new SearchParam();
-        param.setSearchValue(searchValue);
-        param.setPageIndex(pageIndex);
-        param.setPageSize(pageSize);
-        List<SearchResult> resultList = customerDao.find(param);
-        return resultList;
+    List<SearchResult> home(@RequestBody  SearchParam param) {
+        if (param.getSearchValue().equals("")){
+            return new ArrayList<>();
+        } else {
+            List<SearchResult> resultList = customerDao.find(param);
+            return resultList;
+        }
+    }
+
+
+    @RequestMapping("/get/{customerId}")
+    @ResponseBody
+    List<CustomerEntity> get(@PathVariable String customerId) {
+        List<CustomerEntity> list = customerDao.getList(customerId);
+        return list;
     }
 
     public static void main(String[] args) throws Exception {

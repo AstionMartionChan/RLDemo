@@ -17,7 +17,8 @@ import java.util.Iterator;
 public class RLExcelReader {
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-        String filePath = "/Users/LeoChan/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/078875760424de797bc9c4af43faf5c4/Message/MessageTemp/9e20f478899dc29eb19741386f9343c8/File/白金客户信息管理V3.xlsm";
+//        String filePath = "/Users/LeoChan/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/078875760424de797bc9c4af43faf5c4/Message/MessageTemp/9e20f478899dc29eb19741386f9343c8/File/白金客户信息管理V3.xlsm";
+        String filePath = "C:\\Users\\chenfuyun\\Desktop\\rl.xlsx";
 
         Connection connection = MySqlUtil.getConnection();
         try (InputStream fis = new FileInputStream(filePath)) {

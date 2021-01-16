@@ -25,7 +25,26 @@
             tb_rili_customer
         WHERE
             jy_customer_name LIKE CONCAT('%', #{searchValue},'%')
+    </select>
 
-        LIMIT #{pageIndex}, #{pageSize}
+
+    <select id="getList" parameterType="string" resultType="com.rili.demo.entity.CustomerEntity">
+        SELECT
+            customer_id,
+            customer_name,
+            customer_type,
+            customer_org_name,
+            whole_machine_id,
+            jy_machine_name,
+            jy_customer_code,
+            jy_machine_code,
+            jy_customer_name,
+            service_level,
+            mine_level,
+            business_level
+        FROM
+            tb_rili_customer
+        WHERE
+            customer_id = #{customerId}
     </select>
 </mapper>

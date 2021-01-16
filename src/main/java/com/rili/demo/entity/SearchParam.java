@@ -6,6 +6,4 @@ import lombok.Data;
 public class SearchParam {
 
     private String searchValue;
-    private Integer pageIndex;
-    private Integer pageSize;
 }
